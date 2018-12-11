@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #383e4b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,6 +20,47 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.search-bar {
+
+}
+
+.search-bar-search {
+  height:30px;
+  width: 30vw;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  background-color: #49505f;
+  border-color: #6b7586;
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 8px;
+}
+
+.search-bar-search::placeholder {
+  color: #818b9e;
+}
+
+.search-bar-search:focus {
+  border-color: #454c58;
+  border-width: 1px;
+  border-style: solid;
+  text-decoration: none;
+  outline: #454c58;
+}
+
+.icon-bar {
+  display: flex;
+  margin: 16px;
+}
+
+.icon-bar-icon {
+  height: 64px;
+  width: 64px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 @keyframes App-logo-spin {
