@@ -1,11 +1,11 @@
 import React from 'react'
 
-import EmailLogo from './Icons/email.svg'
-import GitHubLogo from './Icons/github.svg'
-import GoogleMaps from './Icons/map.svg'
-import RedditLogo from './Icons/reddit.svg'
-import TwitchLogo from './Icons/twitch.svg'
-import YoutubeLogo from './Icons/youtube.svg'
+import EmailLogo from '../Icons/email.svg'
+import GitHubLogo from '../Icons/github.svg'
+import GoogleMaps from '../Icons/map.svg'
+import RedditLogo from '../Icons/reddit.svg'
+import TwitchLogo from '../Icons/twitch.svg'
+import YoutubeLogo from '../Icons/youtube.svg'
 
 class IconBar extends React.Component {
     render() {

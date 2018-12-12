@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 
-import IconBar from './IconBar';
-import SearchBar from './SearchBar'
-import Weather from './Weather'
+import DateBar from './Widgets/DateBar'
+import IconBar from './Widgets/IconBar';
+import SearchBar from './Widgets/SearchBar'
+import Weather from './Widgets/Weather'
 
-import './App.css';
+import './Styles/App.css';
 
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <SearchBar />
-          <IconBar />
-          <Weather />
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="app">
+                <DateBar />
+                <header className="app-content">
+                    
+                    <SearchBar />
+                    <IconBar />
+                </header>
+            </div>
+        );
+    }
 }
 
 export default App;
