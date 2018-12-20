@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import DateBar from './Widgets/DateBar'
 import IconBar from './Widgets/IconBar';
-import SearchBar from './Widgets/SearchBar'
+import SearchBar from './Widgets/Search/SearchBar'
 import Weather from './Widgets/Weather/WeatherController'
 
 import './Styles/App.css';

@@ -1,5 +1,9 @@
 import React from 'react'
 
+import GoogleIcon from './Resources/GoogleIcon.svg'
+import RedditIcon from './Resources/RedditIcon.svg'
+import YoutubeIcon from './Resources/YoutubeIcon.svg'
+
 class SearchBar extends React.Component {
     constructor(props) {
         super(props) 
@@ -9,6 +13,7 @@ class SearchBar extends React.Component {
         }
 
         this.handleProviderChange = this.handleProviderChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     handleProviderChange(event, maxNoOfProviders) {
@@ -25,25 +30,39 @@ class SearchBar extends React.Component {
         })
     }
 
+    handleClick(maxNoOfProviders) {
+        var currentProviderIndex = this.state.currentProviderIndex;
+        currentProviderIndex++;
+        this.setState({
+            currentProviderIndex: (currentProviderIndex % maxNoOfProviders + maxNoOfProviders) % maxNoOfProviders 
+        })
+    }
+
     render() {
         var providers = [
             {
                 action: "https://www.google.com/search",
-                placeholder: "Search Google"
+                placeholder: "Search Google",
+                icon: GoogleIcon
             },
             {
                 action: "https://www.youtube.com/results?search_query",
-                placeholder: "Search Youtube"
+                placeholder: "Search Youtube",
+                icon: YoutubeIcon
             },
             {
                 action: "https://www.reddit.com/search",
-                placeholder: "Search Reddit"
+                placeholder: "Search Reddit",
+                icon: RedditIcon
             }
         ];
 
         
         return (
-            <div>
+            <div className="search-bar">
+                <div className="search-bar-icon" onClick={() => this.handleClick(providers.length)}>
+                    <img src={providers[this.state.currentProviderIndex].icon} alt="Switch Search Provider" />
+                </div>
                 <form action={providers[this.state.currentProviderIndex].action} method="get" name="searchform">
                     <input 
                         className="search-bar-search" 
@@ -51,7 +70,7 @@ class SearchBar extends React.Component {
                         type="text" 
                         name="q" 
                         placeholder={providers[this.state.currentProviderIndex].placeholder}
-                        onKeyDown={(event) => this.handleProviderChange(event, providers.length)} />
+                        onKeyDown={(event) => this.handleProviderChange(event, providers.length)}/>
                 </form>
             </div>
         )

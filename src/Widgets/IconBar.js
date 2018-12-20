@@ -11,27 +11,23 @@ class IconBar extends React.Component {
     render() {
         return (
             <div className="icon-bar">
-                <a href="https://outlook.live.com/mail/inbox">
-                    <img src={EmailLogo} className="icon-bar-icon" alt="logo" />
-                </a>
-                <a href="https://github.com">
-                    <img src={GitHubLogo} className="icon-bar-icon" alt="logo" />
-                </a>
-                <a href="http://maps.google.com">
-                    <img src={GoogleMaps} className="icon-bar-icon" alt="logo" />
-                </a>
-                <a href="https://reddit.com">
-                    <img src={RedditLogo} className="icon-bar-icon" alt="logo" />
-                </a>
-                <a href="https://www.twitch.tv/directory">
-                    <img src={TwitchLogo} className="icon-bar-icon" alt="logo" />
-                </a>
-                <a href="https://youtube.com">
-                    <img src={YoutubeLogo} className="icon-bar-icon" alt="logo" />
-                </a>
+                <Icon url="https://outlook.live.com/mail/inbox" logo={EmailLogo} />
+                <Icon url="https://github.com/cameronrw-nz" logo={GitHubLogo} />
+                <Icon url="http://maps.google.com" logo={GoogleMaps} />
+                <Icon url="https://reddit.com" logo={RedditLogo} />
+                <Icon url="https://www.twitch.tv/directory" logo={TwitchLogo} />
+                <Icon url="https://youtube.com" logo={YoutubeLogo} />
             </div>
         )
     }
+}
+
+function Icon(props) {
+    return (
+        <a href={props.url}>
+            <img src={props.logo} className="icon-bar-icon" alt="logo" />
+        </a>
+    )
 }
 
 export default IconBar

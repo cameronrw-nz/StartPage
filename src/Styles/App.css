@@ -43,10 +43,39 @@
     color: #61dafb;
 }
 
+.search-bar {
+    width: 35vw;
+    min-width: 464px;
+    max-width: 90vw;
+    display: flex;
+}
+
+.search-bar-icon {
+    width: 5vw;
+    min-width: 64px;
+    max-width:90vw;
+    height: 32px;
+    border-left-color: #6b7586;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-top-color: #6b7586;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-color: #6b7586;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-top:6px;
+    background-color: #49505f;
+}
+
+.search-bar-icon img {
+    height: 28px;
+}
+
 .search-bar-search {
     height:30px;
-    width: 40vw;
-    min-width: 464px;
+    width: 30vw;
+    min-width: 400px;
     max-width:90vw;
     font-size: 24px;
     color: white;
@@ -124,8 +153,25 @@
         width: 46px;
     }
 
+    .search-bar {
+        width: 35vw;
+        min-width: 90vw;
+    }
+
+    .search-bar-icon {
+        width: 5vw;
+        min-width: 10vw;
+        height: 40px;
+        margin-top:1px;
+    }
+
+    .search-bar {
+        width: 5vw;
+        min-width: 90vw;;
+    }
+    
     .search-bar-search {
-        width: 90vw;
+        width: 75vw;
         min-width: 0px;
     }
-  }
+}

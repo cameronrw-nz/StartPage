@@ -1,6 +1,5 @@
 import React from 'react'
 
-import * as WeatherIds from './Resources/WeatherConstants'
 import BrokenClouds from './Resources/brokenClouds.svg'
 import ClearSky from './Resources/clearSky.svg'
 import FewClouds from './Resources/fewClouds.svg'
@@ -12,8 +11,6 @@ import Snow from './Resources/snow.svg'
 import ThunderStorm from './Resources/thunderStorm.svg'
 
 function WeatherView(props) {
-    var description = props.currentWeather.weatherId !== null ? WeatherIds["id" + props.currentWeather.weatherId] : ""
-
     let icon = null;
     if (props.currentWeather.weatherId !== null){
         switch (props.currentWeather.weatherId.toString()[0]) {
