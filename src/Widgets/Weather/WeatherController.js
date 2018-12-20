@@ -7,16 +7,8 @@ class WeatherController extends React.Component {
     constructor() {
         super()
     
-        var currentWeather = {
-            weatherId: null,
-            temp: null,
-            wind: null,
-            sunriseTime: null,
-            sunsetTime: null,
-        }
-
         this.state = {
-            currentWeather: currentWeather,
+            currentWeather: null
         }
     
         this.getMyLocation = this.getMyLocation.bind(this)
@@ -60,7 +52,9 @@ class WeatherController extends React.Component {
     
     render() {
         return (
-            <WeatherView currentWeather={this.state.currentWeather}/>
+            <React.Fragment>
+                {this.state.currentWeather === null ? <div /> : (<WeatherView currentWeather={this.state.currentWeather}/>)}
+            </React.Fragment>
         )
     }
 }
