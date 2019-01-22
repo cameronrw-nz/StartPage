@@ -33,7 +33,7 @@ class WeatherController extends React.Component {
     // Bad practice to show API key but since it's a free acc it doesn't matter 
     async getWeatherData(latitude, longitude) {
         axios
-            .get("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +  "&lon=" + longitude + "&units=metric&dt=UTC&APPID=3c948094ab0c37cefda77bff721b6f13")
+            .get("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude +  "&lon=" + longitude + "&units=metric&dt=UTC&APPID=3c948094ab0c37cefda77bff721b6f13")
             .then( 
                 response => {
 
