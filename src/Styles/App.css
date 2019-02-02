@@ -29,7 +29,7 @@
 }
 
 .date {
-    padding-left:16px;
+    padding-left:36px;
     padding-top:8px;
     position: relative;
 }
@@ -45,6 +45,59 @@
 
 .App-link {
     color: #61dafb;
+}
+
+.icon-bar {
+    display: flex;
+    margin: 16px;
+}
+
+.icon-bar-icon {
+    height: 64px;
+    width: 64px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.reddit {
+    color: #818b9e;
+    padding: 8px 28px 8px 8px;
+}
+
+.reddit-content {
+    background: #49505f;
+    margin: 8px 0px 8px 0px;
+    padding: 8px;
+    border: 1px solid #6b7586;
+}
+
+.reddit-content a {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.sidepanel {
+    height: 100%;
+    width:400px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #383e4b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    border-right: 1px solid #6b7586;
+}
+
+.sidepanel-expander {
+    width:20px;
+    position: absolute;
+    height: 100%;
+    right: 0;
+    border-left: 1px solid #6b7586;
+    background: #6b7586;
 }
 
 .search-bar {
@@ -101,53 +154,6 @@
     border-style: solid;
     text-decoration: none;
     outline: #454c58;
-}
-
-.icon-bar {
-    display: flex;
-    margin: 16px;
-}
-
-.icon-bar-icon {
-    height: 64px;
-    width: 64px;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
-.reddit {
-    color: #818b9e;
-    padding: 8px;
-}
-
-.reddit-content {
-    background: #49505f;
-    margin: 8px 0px 8px 0px;
-    padding: 8px;
-    border: 1px solid #6b7586;
-}
-
-.reddit-content a {
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
-    color: white;
-}
-
-.sidepanel {
-    height: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #383e4b;
-    overflow-x: hidden;
-    transition: 0.5s;
-    border-right: 1px solid #6b7586;
-}
-
-.sidepanel-expander {
-
 }
 
 .weather {

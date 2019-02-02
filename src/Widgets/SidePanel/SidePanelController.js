@@ -20,17 +20,15 @@ class SidePanelController extends React.Component {
     }
 
     render() {
-        var width = "0px";
+        var marginLeft = "-380px";
         if (this.state.isExpanded === true) {
-            width = "400px";
+            marginLeft = "0px";
         }
 
         return (
             <div>
-                <div className="sidepanel-expander" onClick={this.handleExpand}>
-                    Open
-                </div>
-                <div className="sidepanel" style={{width: width}}>
+                <div className="sidepanel" style={{marginLeft: marginLeft}}>
+                    <div className="sidepanel-expander" onClick={this.handleExpand} />
                     <RedditController />
                 </div>
             </div>
