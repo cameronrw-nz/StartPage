@@ -20,9 +20,9 @@ class DateBar extends React.Component {
       }
 
     render() {
-        var localDate = this.state.dateTime.toLocaleString('en-GB', {weekday: 'short', year: 'numeric', month: 'long', day: 'numeric'});
+        var localDate = this.state.dateTime.toLocaleString('th-TH', {weekday: 'short', year: 'numeric', month: 'long', day: 'numeric'});
         var localTime = this.state.dateTime.toLocaleTimeString('it-IT');
-        var nzTime = moment(this.state.dateTime.toString()).tz('NZ').format('hh:mm:ss');
+        var nzTime = moment(this.state.dateTime.toString()).tz('NZ').format('HH:mm:ss');
         var nzDate = moment(this.state.dateTime.toString()).tz('NZ').format('ddd, D MMMM YYYY');
 
         return (
