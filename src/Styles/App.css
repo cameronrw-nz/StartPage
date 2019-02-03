@@ -90,6 +90,14 @@
     text-align: center;
 }
 
+
+.sidepanel-content input:focus {
+    border: 1px solid #454c58;
+    text-decoration: none;
+    outline: #454c58;
+}
+
+
 .sidepanel-expander {
     width:20px;
     position: absolute;
@@ -141,9 +149,7 @@
     color: white;
     text-align: center;
     background-color: #49505f;
-    border-color: #6b7586;
-    border-width: 1px;
-    border-style: solid;
+    border: 1px solid #6b7586;
     padding-left: 8px;
 }
 
@@ -152,9 +158,10 @@
 }
 
 .search-bar-search:focus {
-    border-color: #454c58;
-    border-width: 1px;
-    border-style: solid;
+    border-left: 1px solid #6b7586;
+    border-right: 1px solid #454c58;
+    border-top: 1px solid #454c58;
+    border-bottom: 1px solid #454c58;
     text-decoration: none;
     outline: #454c58;
 }
