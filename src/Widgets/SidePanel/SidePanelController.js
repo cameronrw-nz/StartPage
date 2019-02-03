@@ -1,6 +1,7 @@
 import React from "react";
 
 import RedditController from "./RedditController";
+import CurrencyConversion from "./CurrencyConversion";
 
 class SidePanelController extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class SidePanelController extends React.Component {
             <div>
                 <div className="sidepanel" style={{marginLeft: marginLeft}}>
                     <div className="sidepanel-expander" onClick={this.handleExpand} />
+                    <CurrencyConversion />
                     <RedditController />
                 </div>
             </div>

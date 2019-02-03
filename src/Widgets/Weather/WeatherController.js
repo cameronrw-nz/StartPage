@@ -40,6 +40,8 @@ class WeatherController extends React.Component {
                     var currentWeather = {
                         weatherId: response.data.weather[0].id,
                         temp: response.data.main.temp,
+                        tempMax: response.data.main.temp_max,
+                        tempMin: response.data.main.temp_min,
                         wind: response.data.wind.speed,
                         sunriseTime: response.data.sys.sunrise,
                         sunsetTime: response.data.sys.sunset,

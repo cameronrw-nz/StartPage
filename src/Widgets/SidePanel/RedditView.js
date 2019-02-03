@@ -11,9 +11,9 @@ function RedditView(props) {
             </div>
             );
     }
-    
+
     return (
-        <div className="reddit">
+        <div className="sidepanel-content">
             <h2>Reddit Saved</h2>
             <div>{props.isLoading ?  "Loaded" : "Loading"}</div>
             <div onClick={props.pickRandom}>Generate Saved</div>
