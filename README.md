@@ -16,6 +16,6 @@ Resources:
 * Axios (https://github.com/axios/axios)
 * Reddit API (https://www.reddit.com/dev/api/)
     * snoowrap reddit api (https://github.com/not-an-aardvark/snoowrap)
-* OpenWeatherMap (https://openweathermap.org/api)
+* OpenWeatherMap (https://openweathermap.org/api) 
 * FreeCurrencyConverterApi (https://free.currencyconverterapi.com/)
 * Moment Timezone (https://momentjs.com/timezone/)

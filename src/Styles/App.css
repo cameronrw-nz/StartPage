@@ -79,7 +79,7 @@
 }
 
 .sidepanel-content input {
-    width: 170px;
+    width: 159px;
     height: 32px;
     border: 1px solid #6b7586;
     margin-right:4px;
@@ -97,6 +97,19 @@
     outline: #454c58;
 }
 
+
+.sidepanel-content-button {
+    width: 32px;
+    min-width: 32px;
+    height: 34px;
+    border: 1px solid #6b7586;
+    margin-right:4px;
+    background-color: #49505f;
+    height:32px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
 
 .sidepanel-expander {
     width:20px;

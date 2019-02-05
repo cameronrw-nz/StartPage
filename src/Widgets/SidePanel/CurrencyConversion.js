@@ -6,8 +6,8 @@ class CurrencyConversion extends React.Component {
         super(props);
 
         this.state = {
-            thb: 100,
-            nzd: undefined,
+            thb: undefined,
+            nzd: 1,
             nzdToThb: 1
         }
 
@@ -22,7 +22,7 @@ class CurrencyConversion extends React.Component {
                 response => {
                     this.setState({
                         nzdToThb: response.data.NZD_THB.val,
-                        nzd: (parseFloat(this.state.thb) / response.data.NZD_THB.val).toFixed(2),
+                        thb: (parseFloat(this.state.nzd) * response.data.NZD_THB.val).toFixed(2),
                     })
                 });
     }
