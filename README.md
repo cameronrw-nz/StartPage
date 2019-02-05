@@ -10,6 +10,7 @@ Functionality:
 * Sidepanel including:
     * Currency conversion from THB to NZD and back.
     * Loading Reddit saved posts related to programming topics.
+    * Links for custom shortcuts.
 
 Resources:
 * React (https://reactjs.org/)
