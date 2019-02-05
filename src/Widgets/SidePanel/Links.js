@@ -45,21 +45,50 @@ class Link extends React.Component {
         this.setState({currentName: e.target.value});
     }
 
+    removeLink(index) {
+        var links = this.state.links;
+        if (!links) {
+            links = []
+        }
+
+        links.splice(index, 1);
+
+        localStorage.setItem("links", JSON.stringify(links));
+        var localStorageLinks = JSON.parse(window.localStorage.getItem("links"));
+
+        this.setState({
+            links: localStorageLinks,
+        });
+    }
+
     render() {
         return (
             <div className="sidepanel-content">
                 <h2>Links</h2>
-                <div style={{ display: "flex" }}>
+                <div className="sidepanel-link-input">
                     <input type="text" placeholder="Name" value={this.state.currentName} onInput={this.handleNameChange} />
                     <input type="text" placeholder="Link" value={this.state.currentLink} onInput={this.handleLinkChange} />
                     <div className="sidepanel-content-button" onClick={this.handleSubmit}>
                         +
                     </div>
                 </div>
-                <div>
+                <div style={{display: "flex", flexDirection: "column"}}>
                     {this.state.links 
-                        ? this.state.links.map(element => {
-                            return <div className="reddit-content"><a href={element.link}>{element.name}</a></div>
+                        ? this.state.links.map((element, index) => {
+                            return (
+                                <div style={{display: "flex", width: "100%"}} >
+                                    <div className="reddit-content">
+                                        <a href={element.link}>
+                                            {element.name}
+                                        </a>
+                                    </div>
+                                    <div 
+                                        className="sidepanel-content-link-button"
+                                        onClick={() => this.removeLink(index)}>
+                                        -
+                                    </div>
+                                </div>
+                            )
                         })
                         : null}
                 </div>
