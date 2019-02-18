@@ -26,10 +26,10 @@ class RedditController extends React.Component {
         // Replace with actual connection to reddit.
         const r = new snoowrap({
             userAgent: 'Saved Info/0.1 by Darzolak',
-            clientId: '',
-            clientSecret: '',
-            username: '',
-            password: '' 
+            clientId: process.env.REACT_APP_REDDIT_CLIENTID,
+            clientSecret: process.env.REACT_APP_REDDIT_CLIENTSECRET,
+            username: process.env.REACT_APP_REDDIT_USERNAME,
+            password: process.env.REACT_APP_REDDIT_PASSWORD 
         });
             
         var me = await r.getMe()

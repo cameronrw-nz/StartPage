@@ -14,12 +14,16 @@ class CurrencyConversion extends React.Component {
         this.onNZDChanged = this.onNZDChanged.bind(this);
         this.onTHBChanged = this.onTHBChanged.bind(this);
     }
-    
+
     componentDidMount() {
         axios
-            .get("https://free.currencyconverterapi.com/api/v6/convert?q=NZD_THB&compact=y")
+            .get("https://free.currencyconverterapi.com/api/v6/convert?q=NZD_THB&compact=y&apiKey=" + process.env.REACT_APP_CURRENCY_APIKEY)
             .then( 
                 response => {
+                    if (!response || !response.data || !response.data.NZD_THB) {
+                        return ;
+                    }
+                    
                     this.setState({
                         nzdToThb: response.data.NZD_THB.val,
                         thb: (parseFloat(this.state.nzd) * response.data.NZD_THB.val).toFixed(2),
