@@ -5,6 +5,7 @@
   "homepage": "https://cameronrw-nz.github.io/StartPage/",
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
     "moment-timezone": "^0.5.23",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
