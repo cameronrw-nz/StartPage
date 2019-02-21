@@ -1,37 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import moment from 'moment-timezone'
 
-class DateBar extends React.Component {
-    constructor(props) {
-        super(props);
+function DateBar() {
+    const [dateTime, setDateTime] = useState(new Date());
+    const intervalRef = useRef();
 
-        this.state = {
-            dateTime: new Date(),
-        };
-    }
-    componentDidMount() {
-        this.interval = setInterval(() => this.setState({ 
-            dateTime: new Date(),
-         }), 1000);
-      }
+    useEffect(() => {
+        intervalRef.current = setInterval(() => setDateTime(new Date()), 1000);
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-      }
+         return function cleanup() {
+             clearInterval(intervalRef.current);
+         }
+    });
 
-    render() {
-        var localDate = this.state.dateTime.toLocaleString('th-TH', {weekday: 'short', year: 'numeric', month: 'long', day: 'numeric'});
-        var localTime = this.state.dateTime.toLocaleTimeString('it-IT');
-        var nzTime = moment(this.state.dateTime.toString()).tz('NZ').format('HH:mm:ss');
-        var nzDate = moment(this.state.dateTime.toString()).tz('NZ').format('ddd, D MMMM YYYY');
+    var localDate = dateTime.toLocaleString('th-TH', {weekday: 'short', year: 'numeric', month: 'long', day: 'numeric'});
+    var localTime = dateTime.toLocaleTimeString('it-IT');
+    var nzTime = moment(dateTime.toString()).tz('NZ').format('HH:mm:ss');
+    var nzDate = moment(dateTime.toString()).tz('NZ').format('ddd, D MMMM YYYY');
 
-        return (
-            <div className="date-block">
-                <DateBlock timeZone="Bangkok, Thailand" time={localTime} date={localDate} />
-                <DateBlock timeZone="Christchurch, New Zealand" time={nzTime} date={nzDate} />
-            </div>
-          );
-    }
+    return (
+        <div className="date-block">
+            <DateBlock timeZone="Bangkok, Thailand" time={localTime} date={localDate} />
+            <DateBlock timeZone="Christchurch, New Zealand" time={nzTime} date={nzDate} />
+        </div>
+    );
 }
 
 function DateBlock({ timeZone, time, date }) {

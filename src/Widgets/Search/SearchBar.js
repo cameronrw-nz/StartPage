@@ -1,80 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import GoogleIcon from './Resources/GoogleIcon.svg'
 import RedditIcon from './Resources/RedditIcon.svg'
 import YoutubeIcon from './Resources/YoutubeIcon.svg'
 
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props) 
+function SearchBar() {
+    const [currentProviderIndex, setProviderIndex] = useState(0);
 
-        this.state = {
-            currentProviderIndex: 0
-        }
-
-        this.handleProviderChange = this.handleProviderChange.bind(this)
-        this.handleClick = this.handleClick.bind(this)
-    }
-
-    handleProviderChange(event, maxNoOfProviders) {
-        var currentProviderIndex = this.state.currentProviderIndex;
+    function handleProviderChange(event, maxNoOfProviders) {
+        var currentIndex = currentProviderIndex;
         if (event.keyCode === 38){
-            currentProviderIndex--;
+            currentIndex--;
         }
         else if (event.keyCode === 40) {
-            currentProviderIndex++;
+            currentIndex++;
         }
         
-        this.setState({
-            currentProviderIndex: (currentProviderIndex % maxNoOfProviders + maxNoOfProviders) % maxNoOfProviders 
-        })
+        setProviderIndex((currentIndex % maxNoOfProviders + maxNoOfProviders) % maxNoOfProviders); 
     }
 
-    handleClick(maxNoOfProviders) {
-        var currentProviderIndex = this.state.currentProviderIndex;
-        currentProviderIndex++;
-        this.setState({
-            currentProviderIndex: (currentProviderIndex % maxNoOfProviders + maxNoOfProviders) % maxNoOfProviders 
-        })
+    function handleClick(maxNoOfProviders) {
+        var currentIndex = currentProviderIndex;
+        currentIndex++;
+        setProviderIndex((currentIndex % maxNoOfProviders + maxNoOfProviders) % maxNoOfProviders); 
     }
 
-    render() {
-        var providers = [
-            {
-                action: "https://www.google.com/search",
-                placeholder: "Search Google",
-                icon: GoogleIcon
-            },
-            {
-                action: "https://www.youtube.com/results?search_query",
-                placeholder: "Search Youtube",
-                icon: YoutubeIcon
-            },
-            {
-                action: "https://www.reddit.com/search",
-                placeholder: "Search Reddit",
-                icon: RedditIcon
-            }
-        ];
+    var providers = [
+        {
+            action: "https://www.google.com/search",
+            placeholder: "Search Google",
+            icon: GoogleIcon
+        },
+        {
+            action: "https://www.youtube.com/results?search_query",
+            placeholder: "Search Youtube",
+            icon: YoutubeIcon
+        },
+        {
+            action: "https://www.reddit.com/search",
+            placeholder: "Search Reddit",
+            icon: RedditIcon
+        }
+    ];
 
-        
-        return (
-            <div className="search-bar">
-                <div className="search-bar-icon" onClick={() => this.handleClick(providers.length)}>
-                    <img src={providers[this.state.currentProviderIndex].icon} alt="Switch Search Provider" />
-                </div>
-                <form action={providers[this.state.currentProviderIndex].action} method="get" name="searchform">
-                    <input 
-                        className="search-bar-search" 
-                        autoComplete="off" 
-                        type="text" 
-                        name="q" 
-                        placeholder={providers[this.state.currentProviderIndex].placeholder}
-                        onKeyDown={(event) => this.handleProviderChange(event, providers.length)}/>
-                </form>
+    return (
+        <div className="search-bar">
+            <div className="search-bar-icon" onClick={() => handleClick(providers.length)}>
+                <img src={providers[currentProviderIndex].icon} alt="Switch Search Provider" />
             </div>
-        )
-    }
+            <form action={providers[currentProviderIndex].action} method="get" name="searchform">
+                <input 
+                    className="search-bar-search" 
+                    autoComplete="off" 
+                    type="text" 
+                    name="q" 
+                    placeholder={providers[currentProviderIndex].placeholder}
+                    onKeyDown={(event) => handleProviderChange(event, providers.length)}/>
+            </form>
+        </div>
+    );
 }
 
 export default SearchBar
