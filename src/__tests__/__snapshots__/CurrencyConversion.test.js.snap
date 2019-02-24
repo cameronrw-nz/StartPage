@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Currency Component Render shows a list of users 1`] = `
+<div
+  class="sidepanel-content"
+>
+  <h2>
+    Currency Converter
+  </h2>
+  <input
+    name="thb"
+    placeholder="THB"
+    type="text"
+    value="1"
+  />
+  <input
+    name="nzd"
+    placeholder="NZD"
+    type="text"
+    value="1"
+  />
+  <div>
+    1
+  </div>
+  <div>
+    1
+  </div>
+</div>
+`;

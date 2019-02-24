@@ -108,6 +108,11 @@
     text-align: center;
 }
 
+.sidepanel-content-button:hover {
+    cursor: pointer;
+    background: #7c8596;
+}
+
 .sidepanel-content-link-button {
     width: 32px;
     min-width: 32px;
@@ -119,6 +124,11 @@
     margin: 4px 0px 4px 4px;
     color: white;
     text-align: center;
+}
+
+.sidepanel-content-link-button:hover {
+    cursor: pointer;
+    background: #7c8596;
 }
 
 .sidepanel-link-input {
