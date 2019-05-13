@@ -8,16 +8,16 @@ const allowedSubreddits = [
     "r/programming",
     "r/csharp",
     "r/web_design",
-    "r/javascript",
-]
+    "r/javascript"
+];
 
 class RedditController extends React.Component {
     constructor(props) {
-        super (props);
+        super(props);
 
         this.state = {
             savedCategories: undefined
-        }
+        };
 
         this.pickRandom = this.pickRandom.bind(this);
     }
@@ -25,31 +25,43 @@ class RedditController extends React.Component {
     async componentDidMount() {
         // Replace with actual connection to reddit.
         const r = new snoowrap({
-            userAgent: 'Saved Info/0.1 by Darzolak',
+            userAgent: "Saved Info/0.1 by Darzolak",
             clientId: process.env.REACT_APP_REDDIT_CLIENTID,
             clientSecret: process.env.REACT_APP_REDDIT_CLIENTSECRET,
             username: process.env.REACT_APP_REDDIT_USERNAME,
-            password: process.env.REACT_APP_REDDIT_PASSWORD 
+            password: process.env.REACT_APP_REDDIT_PASSWORD
         });
-            
-        var me = await r.getMe()
+
+        var me = await r.getMe();
         var saved = await me.getSavedContent().fetchAll();
 
         var savedCategories = new Map();
         var items = [];
         saved.forEach(element => {
-            if (allowedSubreddits.find(name => name === element.subreddit_name_prefixed)) {
-                items.push({name: element.title, link: element.permalink});
-                if (savedCategories.get(element.subreddit_name_prefixed) === undefined) {
-                    savedCategories.set(element.subreddit_name_prefixed, [{name: element.title, permalink: element.permalink}]);
-                }
-                else {
-                    savedCategories.get(element.subreddit_name_prefixed).push({name: element.title, permalink: element.permalink});
+            if (
+                allowedSubreddits.find(
+                    name => name === element.subreddit_name_prefixed
+                )
+            ) {
+                items.push({ name: element.title, link: element.permalink });
+                if (
+                    savedCategories.get(element.subreddit_name_prefixed) ===
+                    undefined
+                ) {
+                    savedCategories.set(element.subreddit_name_prefixed, [
+                        { name: element.title, permalink: element.permalink }
+                    ]);
+                } else {
+                    savedCategories.get(element.subreddit_name_prefixed).push({
+                        name: element.title,
+                        permalink: element.permalink
+                    });
                 }
             }
         });
 
-        this.setState({items})
+        this.setState({ items });
+        this.pickRandom();
     }
 
     pickRandom() {
@@ -57,17 +69,24 @@ class RedditController extends React.Component {
             return;
         }
 
-        var item = this.state.items[Math.floor(Math.random() * this.state.items.length)];
-        this.setState({randomSaved:item})
+        const randomItemIndex = Math.floor(
+            Math.random() * (this.state.items.length - 5)
+        );
+        var items = this.state.items.slice(
+            randomItemIndex,
+            randomItemIndex + 5
+        );
+        this.setState({ randomSavedItems: items });
     }
 
-    render () {
+    render() {
         return (
-            <RedditView 
-                content={this.state.randomSaved} 
-                isLoading={this.state.items !== undefined}
-                pickRandom={this.pickRandom} />
-        )
+            <RedditView
+                content={this.state.randomSavedItems}
+                isLoading={this.state.items === undefined}
+                pickRandom={this.pickRandom}
+            />
+        );
     }
 }
 

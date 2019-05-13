@@ -3,23 +3,32 @@ import React from "react";
 function RedditView(props) {
     let content;
     if (props.content) {
-        content = (
-            <div className="reddit-content">
-                <a href={`https://reddit.com/${props.content.link}`}>
-                    {props.content.name}
-                </a>
-            </div>
-            );
+        content = props.content.map(item => {
+            return GetRedditItem(item.name, item.link);
+        });
     }
 
     return (
         <div className="sidepanel-content">
             <h2>Reddit Saved</h2>
-            <div>{props.isLoading ?  "Loaded" : "Loading"}</div>
-            <div onClick={props.pickRandom}>Generate Saved</div>
+            {props.isLoading ? (
+                <div>Loading...</div>
+            ) : (
+                <div onClick={props.pickRandom}>
+                    Generate Saved Reddit Items
+                </div>
+            )}
             {content}
         </div>
-    )
+    );
+}
+
+function GetRedditItem(name, link) {
+    return (
+        <div className="reddit-content">
+            <a href={`https://reddit.com/${link}`}>{name}</a>
+        </div>
+    );
 }
 
 export default RedditView;

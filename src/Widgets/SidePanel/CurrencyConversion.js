@@ -6,13 +6,13 @@ function CurrencyConversion() {
     const [thb, setThb] = useState(1)
     const [nzd, setNzd] = useState(1)
     const [nzdToThb, setNzdToThb] = useState(1)
-    
+
     useEffect(() => {
         Api.getCurrencyConversion()
-            .then( 
+            .then(
                 response => {
                     if (!response || !response.data || !response.data.NZD_THB) {
-                        return ;
+                        return;
                     }
                     setNzdToThb(response.data.NZD_THB.val);
                     setThb((parseFloat(nzd) * response.data.NZD_THB.val).toFixed(2));
@@ -32,10 +32,8 @@ function CurrencyConversion() {
     return (
         <div className="sidepanel-content">
             <h2>Currency Converter</h2>
-            <input type="text" placeholder="THB" name="thb" defaultValue={thb} onInput={onTHBChanged} />
-            <input type="text" placeholder="NZD" name="nzd" defaultValue={nzd} onInput={onNZDChanged} />
-            <div>{thb}</div>
-            <div>{nzd}</div>
+            <input type="text" placeholder="THB" name="thb" value={thb} onInput={onTHBChanged} />
+            <input type="text" placeholder="NZD" name="nzd" value={nzd} onInput={onNZDChanged} />
         </div>
     );
 }
