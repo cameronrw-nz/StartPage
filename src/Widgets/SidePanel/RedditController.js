@@ -23,16 +23,41 @@ class RedditController extends React.Component {
     }
 
     async componentDidMount() {
+        if (
+            process.env.REACT_APP_REDDIT_USERNAME === "" ||
+            process.env.REACT_APP_REDDIT_PASSWORD === ""
+        ) {
+            return;
+        } else {
+            await this.getSavedItems(
+                process.env.REACT_APP_REDDIT_USERNAME,
+                process.env.REACT_APP_REDDIT_PASSWORD
+            );
+        }
+    }
+
+    getSavedItems = async (username, password) => {
         // Replace with actual connection to reddit.
         const r = new snoowrap({
             userAgent: "Saved Info/0.1 by Darzolak",
             clientId: process.env.REACT_APP_REDDIT_CLIENTID,
             clientSecret: process.env.REACT_APP_REDDIT_CLIENTSECRET,
-            username: process.env.REACT_APP_REDDIT_USERNAME,
-            password: process.env.REACT_APP_REDDIT_PASSWORD
+            username: username,
+            password: password
         });
 
-        var me = await r.getMe();
+        var hasError = false;
+        var me = await r.getMe().catch(e => (hasError = true));
+
+        if (hasError) {
+            this.setState({
+                isLoggedIn: false,
+                errorMessage: "Username or Password was incorrect."
+            });
+            return;
+        } else {
+            this.setState({ isLoggedIn: true });
+        }
         var saved = await me.getSavedContent().fetchAll();
 
         var savedCategories = new Map();
@@ -62,7 +87,8 @@ class RedditController extends React.Component {
 
         this.setState({ items });
         this.pickRandom();
-    }
+        return true;
+    };
 
     pickRandom() {
         if (!this.state.items) {
@@ -79,12 +105,25 @@ class RedditController extends React.Component {
         this.setState({ randomSavedItems: items });
     }
 
+    onSubmit = e => {
+        e.preventDefault();
+        const username = e.target[0].value;
+        const password = e.target[1].value;
+
+        if (username && password) {
+            this.getSavedItems(username, password);
+        }
+    };
+
     render() {
         return (
             <RedditView
                 content={this.state.randomSavedItems}
                 isLoading={this.state.items === undefined}
                 pickRandom={this.pickRandom}
+                isLoggedIn={this.state.isLoggedIn}
+                onSubmit={this.onSubmit}
+                errorMessage={this.state.errorMessage}
             />
         );
     }
