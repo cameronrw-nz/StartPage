@@ -21,9 +21,9 @@
 }
 
 .date {
-    padding-left:36px;
-    padding-top:8px;
-    
+    padding-left: 36px;
+    padding-top: 8px;
+
     position: relative;
 }
 
@@ -64,7 +64,7 @@
 
 .sidepanel {
     height: 100%;
-    width:400px;
+    width: 373px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -81,10 +81,10 @@
 }
 
 .sidepanel-content input {
-    width: 159px;
+    width: 145.5px;
     height: 32px;
     border: 1px solid #6b7586;
-    margin-right:4px;
+    margin-right: 4px;
     background-color: #49505f;
     font-size: 16px;
     color: white;
@@ -101,7 +101,6 @@
     width: 32px;
     min-width: 32px;
     border: 1px solid #6b7586;
-    margin-right:4px;
     background-color: #49505f;
     font-size: 20px;
     color: white;
@@ -118,7 +117,7 @@
     min-width: 32px;
     height: 32px;
     border: 1px solid #6b7586;
-    margin-right:4px;
+    margin-right: 4px;
     background-color: #49505f;
     font-size: 20px;
     margin: 4px 0px 4px 4px;
@@ -133,11 +132,11 @@
 
 .sidepanel-link-input {
     margin-bottom: 4px;
-    display:flex;
+    display: flex;
 }
 
 .sidepanel-expander {
-    width:20px;
+    width: 20px;
     position: absolute;
     height: 100%;
     right: 0;
@@ -160,12 +159,11 @@
 .search-bar-icon {
     width: 5vw;
     min-width: 64px;
-    max-width:90vw;
+    max-width: 90vw;
     height: 32px;
     border-left: 1px solid #6b7586;
     border-top: 1px solid #6b7586;
     border-bottom: 1px solid #6b7586;
-    margin-top:6px;
     background-color: #49505f;
 }
 
@@ -179,10 +177,10 @@
 }
 
 .search-bar-search {
-    height:30px;
+    height: 30px;
     width: 30vw;
     min-width: 400px;
-    max-width:90vw;
+    max-width: 90vw;
     font-size: 24px;
     color: white;
     text-align: center;
@@ -205,16 +203,16 @@
 }
 
 .weather {
-    padding-right:16px;
-    padding-top:8px;
+    padding-right: 16px;
+    padding-top: 8px;
     position: absolute;
     right: 0px;
-    top:0px;
+    top: 0px;
 }
 
 .weather-current-primary {
     font-size: 30px;
-    margin-right:4px;
+    margin-right: 4px;
 }
 
 .weather-primary-icon {
@@ -244,14 +242,14 @@
         width: 5vw;
         min-width: 10vw;
         height: 40px;
-        margin-top:1px;
+        margin-top: 1px;
     }
 
     .search-bar {
         width: 5vw;
-        min-width: 90vw;;
+        min-width: 90vw;
     }
-    
+
     .search-bar-search {
         width: 75vw;
         min-width: 0px;
