@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "a7c57edd720126e4ac6b8c60893f57cf",
-    "url": "/StartPage/static/media/YoutubeIcon.a7c57edd.svg"
+    "revision": "a0b0f5d7b077de73bf1f7463c51d9324",
+    "url": "/StartPage/static/media/RedditIcon.a0b0f5d7.svg"
   },
   {
-    "revision": "e3f1ddb71746c76a0969",
-    "url": "/StartPage/static/css/main.fc34b068.chunk.css"
+    "revision": "aad078c7aaaff7c2412d",
+    "url": "/StartPage/static/css/main.b36158e0.chunk.css"
   },
   {
-    "revision": "d3b63e9c02a2422f7a5c",
-    "url": "/StartPage/static/js/1.d3b63e9c.chunk.js"
+    "revision": "df27ddb5acb85f52a310",
+    "url": "/StartPage/static/js/1.df27ddb5.chunk.js"
   },
   {
     "revision": "4348a41df45156bb5a72",
@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/GoogleIcon.b5908130.svg"
   },
   {
-    "revision": "a0b0f5d7b077de73bf1f7463c51d9324",
-    "url": "/StartPage/static/media/RedditIcon.a0b0f5d7.svg"
+    "revision": "aad078c7aaaff7c2412d",
+    "url": "/StartPage/static/js/main.aad078c7.chunk.js"
   },
   {
-    "revision": "e3f1ddb71746c76a0969",
-    "url": "/StartPage/static/js/main.e3f1ddb7.chunk.js"
+    "revision": "a7c57edd720126e4ac6b8c60893f57cf",
+    "url": "/StartPage/static/media/YoutubeIcon.a7c57edd.svg"
   },
   {
     "revision": "f857faf05151956a86e6791e667f0f55",
@@ -88,11 +88,7 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/thunderStorm.0fff53ee.svg"
   },
   {
-    "revision": "e1bba2b9025ea23a784b03cb092f5a9c",
-    "url": "/StartPage/static/media/background.e1bba2b9.jpg"
-  },
-  {
-    "revision": "7d070baf1d4462a7b000c50e77a1c84a",
+    "revision": "90c5bf13ea14ca8dcbfcfbd11ce659bf",
     "url": "/StartPage/index.html"
   }
 ];
