@@ -38,8 +38,8 @@ function RedditView(props) {
     return (
         <div className="sidepanel-content">
             <h2>Reddit Saved</h2>
-            {content}
             {redditContent}
+            {content}
         </div>
     );
 }

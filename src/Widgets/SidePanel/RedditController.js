@@ -6,6 +6,8 @@ import RedditView from "./RedditView";
 const allowedSubreddits = [
     "r/reactjs",
     "r/programming",
+    "r/webdev",
+    "r/learnprogramming",
     "r/csharp",
     "r/web_design",
     "r/javascript"
@@ -58,7 +60,7 @@ class RedditController extends React.Component {
         } else {
             this.setState({ isLoggedIn: true });
         }
-        var saved = await me.getSavedContent().fetchAll();
+        var saved = await me.getSavedContent();
 
         var savedCategories = new Map();
         var items = [];
@@ -87,6 +89,39 @@ class RedditController extends React.Component {
 
         this.setState({ items });
         this.pickRandom();
+
+        // Fetch More
+        saved = await saved.fetchMore({
+            skipReplies: true,
+            amount: 100
+        });
+        this.setState({ error: "loaded saved" });
+
+        savedCategories = new Map();
+        items = [];
+        saved.forEach(element => {
+            if (
+                allowedSubreddits.find(
+                    name => name === element.subreddit_name_prefixed
+                )
+            ) {
+                items.push({ name: element.title, link: element.permalink });
+                if (
+                    savedCategories.get(element.subreddit_name_prefixed) ===
+                    undefined
+                ) {
+                    savedCategories.set(element.subreddit_name_prefixed, [
+                        { name: element.title, permalink: element.permalink }
+                    ]);
+                } else {
+                    savedCategories.get(element.subreddit_name_prefixed).push({
+                        name: element.title,
+                        permalink: element.permalink
+                    });
+                }
+            }
+        });
+        this.setState({ items });
         return true;
     };
 
@@ -96,11 +131,11 @@ class RedditController extends React.Component {
         }
 
         const randomItemIndex = Math.floor(
-            Math.random() * (this.state.items.length - 5)
+            Math.random() * (this.state.items.length - 7)
         );
         var items = this.state.items.slice(
             randomItemIndex,
-            randomItemIndex + 5
+            randomItemIndex + 7
         );
         this.setState({ randomSavedItems: items });
     }
@@ -111,7 +146,11 @@ class RedditController extends React.Component {
         const password = e.target[1].value;
 
         if (username && password) {
-            this.getSavedItems(username, password);
+            try {
+                this.getSavedItems(username, password);
+            } catch (e) {
+                this.setState({ error: e });
+            }
         }
     };
 
@@ -119,6 +158,7 @@ class RedditController extends React.Component {
         return (
             <RedditView
                 content={this.state.randomSavedItems}
+                error={this.state.error}
                 isLoading={this.state.items === undefined}
                 pickRandom={this.pickRandom}
                 isLoggedIn={this.state.isLoggedIn}
