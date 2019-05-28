@@ -7,7 +7,7 @@ function RedditView(props) {
     if (props.isLoggedIn) {
         if (props.content) {
             redditContent = props.content.map(item => {
-                return GetRedditItem(item.name, item.link);
+                return GetRedditItem(item.name, item.link, item.colour);
             });
         }
 
@@ -44,9 +44,9 @@ function RedditView(props) {
     );
 }
 
-function GetRedditItem(name, link) {
+function GetRedditItem(name, link, colour) {
     return (
-        <div className="reddit-content">
+        <div className="reddit-content" style={{ backgroundColor: colour }}>
             <a href={`https://reddit.com/${link}`}>{name}</a>
         </div>
     );

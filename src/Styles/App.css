@@ -65,6 +65,7 @@
     flex-grow: 1;
     max-width: 365px;
     border: 1px solid #6b7586;
+    border-radius: 3px;
 }
 
 .reddit-content a {

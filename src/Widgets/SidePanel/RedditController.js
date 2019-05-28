@@ -3,15 +3,17 @@ import snoowrap from "snoowrap";
 
 import RedditView from "./RedditView";
 
-const allowedSubreddits = [
-    "r/reactjs",
-    "r/programming",
-    "r/webdev",
-    "r/learnprogramming",
-    "r/csharp",
-    "r/web_design",
-    "r/javascript"
-];
+const webColour = "rgb(64.4%, 29.1%, 29.1%)";
+const dotnetColour = "rgb(34.6%, 39.5%, 64.8%)";
+const generalColour = "rgb(30.6%, 60.9%, 35.9%)";
+const allowedSubreddits = new Map();
+allowedSubreddits.set("r/reactjs", webColour);
+allowedSubreddits.set("r/programming", generalColour);
+allowedSubreddits.set("r/webdev", webColour);
+allowedSubreddits.set("r/learnprogramming", generalColour);
+allowedSubreddits.set("r/csharp", dotnetColour);
+allowedSubreddits.set("r/web_design", webColour);
+allowedSubreddits.set("r/javascript", webColour);
 
 class RedditController extends React.Component {
     constructor(props) {
@@ -65,16 +67,16 @@ class RedditController extends React.Component {
         var savedCategories = new Map();
         var items = [];
         saved.forEach(element => {
-            if (
-                allowedSubreddits.find(
-                    name => name === element.subreddit_name_prefixed
-                )
-            ) {
-                items.push({ name: element.title, link: element.permalink });
-                if (
-                    savedCategories.get(element.subreddit_name_prefixed) ===
-                    undefined
-                ) {
+            const categoryColour = allowedSubreddits.get(
+                element.subreddit_name_prefixed
+            );
+            if (categoryColour) {
+                items.push({
+                    name: element.title,
+                    link: element.permalink,
+                    colour: categoryColour
+                });
+                if (!savedCategories.get(element.subreddit_name_prefixed)) {
                     savedCategories.set(element.subreddit_name_prefixed, [
                         { name: element.title, permalink: element.permalink }
                     ]);
@@ -95,21 +97,20 @@ class RedditController extends React.Component {
             skipReplies: true,
             amount: 100
         });
-        this.setState({ error: "loaded saved" });
 
         savedCategories = new Map();
         items = [];
         saved.forEach(element => {
-            if (
-                allowedSubreddits.find(
-                    name => name === element.subreddit_name_prefixed
-                )
-            ) {
-                items.push({ name: element.title, link: element.permalink });
-                if (
-                    savedCategories.get(element.subreddit_name_prefixed) ===
-                    undefined
-                ) {
+            const categoryColour = allowedSubreddits.get(
+                element.subreddit_name_prefixed
+            );
+            if (categoryColour) {
+                items.push({
+                    name: element.title,
+                    link: element.permalink,
+                    colour: categoryColour
+                });
+                if (!savedCategories.get(element.subreddit_name_prefixed)) {
                     savedCategories.set(element.subreddit_name_prefixed, [
                         { name: element.title, permalink: element.permalink }
                     ]);
@@ -146,11 +147,7 @@ class RedditController extends React.Component {
         const password = e.target[1].value;
 
         if (username && password) {
-            try {
-                this.getSavedItems(username, password);
-            } catch (e) {
-                this.setState({ error: e });
-            }
+            this.getSavedItems(username, password);
         }
     };
 
