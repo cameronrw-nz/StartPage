@@ -2,7 +2,6 @@ import React from "react";
 
 import DateBar from "./Widgets/DateBar";
 import IconBar from "./Widgets/IconBar";
-import SidePanel from "./Widgets/SidePanel/SidePanel";
 import SearchBar from "./Widgets/Search/SearchBar";
 import Weather from "./Widgets/Weather/WeatherController";
 

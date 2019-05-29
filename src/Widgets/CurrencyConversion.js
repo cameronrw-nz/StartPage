@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import * as Api from "../../Api/Api";
+import * as Api from "../Api/Api";
 
 function CurrencyConversion() {
     const [thb, setThb] = useState(1);

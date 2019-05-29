@@ -14,7 +14,9 @@ function RedditView(props) {
         content = props.isLoading ? (
             <div>Loading...</div>
         ) : (
-            <div onClick={props.pickRandom}>Generate Saved Reddit Items</div>
+            <div className="action-button" onClick={props.pickRandom}>
+                <div className="action-button-content">Refresh</div>
+            </div>
         );
     } else {
         content = (
@@ -46,9 +48,11 @@ function RedditView(props) {
 
 function GetRedditItem(name, link, colour) {
     return (
-        <div className="reddit-content" style={{ backgroundColor: colour }}>
-            <a href={`https://reddit.com/${link}`}>{name}</a>
-        </div>
+        <a href={`https://reddit.com/${link}`}>
+            <div className="section-item" style={{ backgroundColor: colour }}>
+                {name}
+            </div>
+        </a>
     );
 }
 
