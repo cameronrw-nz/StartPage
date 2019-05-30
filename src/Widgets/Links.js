@@ -11,8 +11,6 @@ function Link(props) {
         console.log("loading");
     }, []);
 
-    const handleIsEnteringLink = () => {};
-
     const handleSubmit = e => {
         e.preventDefault();
         let newLinks = links;
@@ -36,7 +34,8 @@ function Link(props) {
         setIsLinking(false);
     };
 
-    const removeLink = index => {
+    const removeLink = (e, index) => {
+        e.preventDefault();
         if (!links) {
             links = [];
         }
@@ -55,7 +54,17 @@ function Link(props) {
         ? links.map((element, index) => {
               return (
                   <a href={element.link}>
-                      <div className="section-item">{element.name}</div>
+                      <div className="section-item">
+                          <div className="section-item-content">
+                              {element.name}
+                          </div>
+                          <div
+                              className="section-item-action"
+                              onClick={e => removeLink(e, index)}
+                          >
+                              -
+                          </div>
+                      </div>
                   </a>
               );
           })
@@ -66,15 +75,17 @@ function Link(props) {
             <div className="sidepanel-link-input">
                 <input
                     type="text"
+                    onChange={e => setCurrentName(e.target.value)}
+                    style={{ marginRight: "4px" }}
                     placeholder="Name"
                     value={currentName}
-                    onChange={e => setCurrentName(e.target.value)}
                 />
                 <input
                     type="text"
+                    onChange={e => setCurrentLink(e.target.value)}
+                    style={{ marginRight: "4px" }}
                     placeholder="Link"
                     value={currentLink}
-                    onChange={e => setCurrentLink(e.target.value)}
                 />
                 <button type="submit" className="sidepanel-content-button">
                     +

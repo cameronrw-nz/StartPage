@@ -2,31 +2,71 @@ import React, { useState, useEffect } from "react";
 
 import * as Api from "../Api/Api";
 
+const availableCurrencies = ["NZD", "THB", "USD"];
+
 function CurrencyConversion() {
-    const [thb, setThb] = useState(1);
-    const [nzd, setNzd] = useState(1);
-    const [nzdToThb, setNzdToThb] = useState(1);
+    const [fromCurrency, setFromCurrency] = useState("NZD");
+    const [toCurrency, setToCurrency] = useState("THB");
+    const [fromAmount, setFromAmount] = useState(1);
+    const [toAmount, setToAmount] = useState(1);
+    const [fromTo, setFromTo] = useState(1);
 
     useEffect(() => {
-        Api.getCurrencyConversion().then(response => {
-            if (!response || !response.data || !response.data.NZD_THB) {
+        getExchangeRate();
+    }, []);
+
+    function getExchangeRate(isSettingTo = true) {
+        Api.getCurrencyConversion(fromCurrency, toCurrency).then(response => {
+            if (
+                !response ||
+                !response.data ||
+                !response.data[`${fromCurrency}_${toCurrency}`]
+            ) {
                 return;
             }
-            setNzdToThb(response.data.NZD_THB.val);
-            setThb((parseFloat(nzd) * response.data.NZD_THB.val).toFixed(2));
+            setFromTo(response.data[`${fromCurrency}_${toCurrency}`].val);
+            if (isSettingTo) {
+                setToAmount(
+                    (
+                        parseFloat(fromAmount) *
+                        response.data[`${fromCurrency}_${toCurrency}`].val
+                    ).toFixed(2)
+                );
+            } else {
+                setFromAmount(
+                    (
+                        parseFloat(toAmount) /
+                        response.data[`${fromCurrency}_${toCurrency}`].val
+                    ).toFixed(2)
+                );
+            }
         });
-    });
-
-    function onNZDChanged(e) {
-        setNzd(e.target.value);
-        setThb((parseFloat(e.target.value) * nzdToThb).toFixed(2));
     }
 
-    function onTHBChanged(e) {
-        setNzd((parseFloat(e.target.value) / nzdToThb).toFixed(2));
-        setThb(e.target.value);
+    function onToChanged(e) {
+        setToAmount(e.target.value);
+        setFromAmount((parseFloat(e.target.value) * fromTo).toFixed(2));
     }
-    console.log(`NZD: ${nzd}, THB: ${thb}`);
+
+    function onFromChanged(e) {
+        setToAmount((parseFloat(e.target.value) / fromTo).toFixed(2));
+        setFromAmount(e.target.value);
+    }
+
+    function onFromCurrencyChanged() {
+        var currencyIndex = availableCurrencies.indexOf(fromCurrency);
+        var newIndex = (currencyIndex + 1) % availableCurrencies.length;
+        setFromCurrency(availableCurrencies[newIndex]);
+        getExchangeRate();
+    }
+
+    function onToCurrencyChanged() {
+        var currencyIndex = availableCurrencies.indexOf(toCurrency);
+        var newIndex = (currencyIndex + 1) % availableCurrencies.length;
+        setToCurrency(availableCurrencies[newIndex]);
+        getExchangeRate(false);
+    }
+
     return (
         <div className="sidepanel-content">
             <h2>Currency Converter</h2>
@@ -34,17 +74,25 @@ function CurrencyConversion() {
                 <input
                     type="text"
                     placeholder="THB"
-                    name="thb"
-                    value={thb}
-                    onInput={onTHBChanged}
+                    value={fromAmount}
+                    onInput={onFromChanged}
                 />
+                <div
+                    className="currency"
+                    style={{ marginRight: "4px" }}
+                    onClick={onFromCurrencyChanged}
+                >
+                    {fromCurrency}
+                </div>
                 <input
                     type="text"
                     placeholder="NZD"
-                    name="nzd"
-                    value={nzd}
-                    onInput={onNZDChanged}
+                    value={toAmount}
+                    onInput={onToChanged}
                 />
+                <div className="currency" onClick={onToCurrencyChanged}>
+                    {toCurrency}
+                </div>
             </div>
         </div>
     );
