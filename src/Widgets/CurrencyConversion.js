@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import * as Api from "../Api/Api";
+import usePrevious from "../UsePrevious";
 
 const availableCurrencies = ["NZD", "THB", "USD"];
 
@@ -11,9 +12,16 @@ function CurrencyConversion() {
     const [toAmount, setToAmount] = useState(1);
     const [fromTo, setFromTo] = useState(1);
 
+    const previousFrom = usePrevious(fromCurrency);
+    const previousTo = usePrevious(toCurrency);
+
     useEffect(() => {
-        getExchangeRate();
-    }, []);
+        if (previousFrom !== fromCurrency) {
+            getExchangeRate();
+        } else if (previousTo !== toCurrency) {
+            getExchangeRate(false);
+        }
+    }, [fromCurrency, toCurrency]);
 
     function getExchangeRate(isSettingTo = true) {
         Api.getCurrencyConversion(fromCurrency, toCurrency).then(response => {
@@ -57,14 +65,12 @@ function CurrencyConversion() {
         var currencyIndex = availableCurrencies.indexOf(fromCurrency);
         var newIndex = (currencyIndex + 1) % availableCurrencies.length;
         setFromCurrency(availableCurrencies[newIndex]);
-        getExchangeRate();
     }
 
     function onToCurrencyChanged() {
         var currencyIndex = availableCurrencies.indexOf(toCurrency);
         var newIndex = (currencyIndex + 1) % availableCurrencies.length;
         setToCurrency(availableCurrencies[newIndex]);
-        getExchangeRate(false);
     }
 
     return (
