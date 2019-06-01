@@ -51,7 +51,7 @@ function SearchBar(props) {
         }
     ];
 
-    const icon = props.theme === themes.dark ? LightOn : LightOff;
+    const icon = props.theme.id === themes.dark.id ? LightOn : LightOff;
 
     return (
         <ThemeContext.Consumer>

@@ -2,6 +2,7 @@ import React from "react";
 
 export const themes = {
     light: {
+        id: 0,
         boxBackground: "#d0d0d0",
         staticText: "black",
         dynamicText: "black",
@@ -9,6 +10,7 @@ export const themes = {
         border: "black"
     },
     dark: {
+        id: 1,
         boxBackground: "#49505f",
         staticText: "#818b9e",
         dynamicText: "white",
@@ -17,4 +19,6 @@ export const themes = {
     }
 };
 
-export const ThemeContext = React.createContext(themes.dark);
+export const ThemeContext = React.createContext(
+    JSON.parse(window.localStorage.getItem("theme")) || themes.dark
+);

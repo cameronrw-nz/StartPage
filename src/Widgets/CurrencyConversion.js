@@ -54,11 +54,11 @@ function CurrencyConversion() {
 
     function onToChanged(e) {
         setToAmount(e.target.value);
-        setFromAmount((parseFloat(e.target.value) * fromTo).toFixed(2));
+        setFromAmount((parseFloat(e.target.value) / fromTo).toFixed(2));
     }
 
     function onFromChanged(e) {
-        setToAmount((parseFloat(e.target.value) / fromTo).toFixed(2));
+        setToAmount((parseFloat(e.target.value) * fromTo).toFixed(2));
         setFromAmount(e.target.value);
     }
 
@@ -89,7 +89,7 @@ function CurrencyConversion() {
                             type="text"
                             placeholder="THB"
                             value={fromAmount}
-                            onInput={onFromChanged}
+                            onChange={onFromChanged}
                             style={{
                                 borderColor: theme.border,
                                 background: theme.boxBackground,
@@ -98,9 +98,9 @@ function CurrencyConversion() {
                         />
                         <div
                             className="currency"
-                            style={{ marginRight: "4px" }}
                             onClick={onFromCurrencyChanged}
                             style={{
+                                marginRight: "4px",
                                 borderColor: theme.border,
                                 background: theme.boxBackground
                             }}
@@ -111,7 +111,7 @@ function CurrencyConversion() {
                             type="text"
                             placeholder="NZD"
                             value={toAmount}
-                            onInput={onToChanged}
+                            onChange={onToChanged}
                             style={{
                                 borderColor: theme.border,
                                 background: theme.boxBackground,

@@ -36,13 +36,14 @@ function Link(props) {
 
     const removeLink = (e, index) => {
         e.preventDefault();
-        if (!links) {
-            links = [];
+        let newLinks = links;
+        if (!newLinks) {
+            newLinks = [];
         }
 
-        links.splice(index, 1);
+        newLinks.splice(index, 1);
 
-        localStorage.setItem("links", JSON.stringify(links));
+        localStorage.setItem("links", JSON.stringify(newLinks));
         var localStorageLinks = JSON.parse(
             window.localStorage.getItem("links")
         );
@@ -53,7 +54,7 @@ function Link(props) {
     const linksDisplay = links
         ? links.map((element, index) => {
               return (
-                  <a href={element.link}>
+                  <a key="index" href={element.link}>
                       <div
                           className="section-item"
                           style={{
@@ -83,10 +84,10 @@ function Link(props) {
                 <input
                     type="text"
                     onChange={e => setCurrentName(e.target.value)}
-                    style={{ marginRight: "4px" }}
                     placeholder="Name"
                     value={currentName}
                     style={{
+                        marginRight: "4px",
                         borderColor: props.theme.border,
                         background: props.theme.boxBackground,
                         color: props.theme.dynamicText
@@ -95,10 +96,10 @@ function Link(props) {
                 <input
                     type="text"
                     onChange={e => setCurrentLink(e.target.value)}
-                    style={{ marginRight: "4px" }}
                     placeholder="Link"
                     value={currentLink}
                     style={{
+                        marginRight: "4px",
                         borderColor: props.theme.border,
                         background: props.theme.boxBackground,
                         color: props.theme.dynamicText

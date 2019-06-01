@@ -9,7 +9,6 @@ import Rain from "./Resources/rain.svg";
 import ScatteredClouds from "./Resources/scatteredClouds.svg";
 import Snow from "./Resources/snow.svg";
 import ThunderStorm from "./Resources/thunderStorm.svg";
-import { isContext } from "vm";
 
 function WeatherView(props) {
     let icon = null;

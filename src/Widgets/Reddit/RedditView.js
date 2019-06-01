@@ -1,22 +1,23 @@
 import React from "react";
 
 function RedditView(props) {
-    let content;
-    let redditContent;
+    let loginDisplay;
+    let refreshItemDisplay;
+    let redditContentDisplay;
 
     if (props.isLoggedIn) {
         if (props.content) {
-            redditContent = props.content.map(item => {
-                return GetRedditItem(
-                    item.name,
-                    item.link,
-                    item.colour,
+            redditContentDisplay = props.content.map(redditItem => {
+                return GetRedditItemDisplay(
+                    redditItem.name,
+                    redditItem.link,
+                    redditItem.colour,
                     props.theme
                 );
             });
         }
 
-        content = props.isLoading ? (
+        refreshItemDisplay = props.isLoading ? (
             <div style={{ color: props.theme.staticText }}>Loading...</div>
         ) : (
             <div className="action-button" onClick={props.pickRandom}>
@@ -32,7 +33,7 @@ function RedditView(props) {
             </div>
         );
     } else {
-        content = (
+        loginDisplay = (
             <form onSubmit={props.onSubmit}>
                 <div className="sidepanel-link-input">
                     <input
@@ -81,13 +82,14 @@ function RedditView(props) {
     return (
         <div className="sidepanel-content">
             <h2 style={{ color: props.theme.staticText }}>Reddit Saved</h2>
-            {redditContent}
-            {content}
+            {redditContentDisplay}
+            {refreshItemDisplay}
+            {loginDisplay}
         </div>
     );
 }
 
-function GetRedditItem(name, link, colour, theme) {
+function GetRedditItemDisplay(name, link, colour, theme) {
     return (
         <a href={`https://reddit.com/${link}`}>
             <div
