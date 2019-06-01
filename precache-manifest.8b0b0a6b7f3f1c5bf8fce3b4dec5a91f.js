@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "a0b0f5d7b077de73bf1f7463c51d9324",
-    "url": "/StartPage/static/media/RedditIcon.a0b0f5d7.svg"
+    "revision": "a7c57edd720126e4ac6b8c60893f57cf",
+    "url": "/StartPage/static/media/YoutubeIcon.a7c57edd.svg"
   },
   {
-    "revision": "e2709e1ccbfe07216899",
-    "url": "/StartPage/static/css/main.6f15ce56.chunk.css"
+    "revision": "c25c3d238d085e4399c9",
+    "url": "/StartPage/static/css/main.78155c82.chunk.css"
   },
   {
-    "revision": "81248e223a7c2a1fc411",
-    "url": "/StartPage/static/js/1.81248e22.chunk.js"
+    "revision": "e898288fe0dd747786b1",
+    "url": "/StartPage/static/js/1.e898288f.chunk.js"
   },
   {
     "revision": "4348a41df45156bb5a72",
@@ -44,12 +44,20 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/GoogleIcon.b5908130.svg"
   },
   {
-    "revision": "e2709e1ccbfe07216899",
-    "url": "/StartPage/static/js/main.e2709e1c.chunk.js"
+    "revision": "a0b0f5d7b077de73bf1f7463c51d9324",
+    "url": "/StartPage/static/media/RedditIcon.a0b0f5d7.svg"
   },
   {
-    "revision": "a7c57edd720126e4ac6b8c60893f57cf",
-    "url": "/StartPage/static/media/YoutubeIcon.a7c57edd.svg"
+    "revision": "c25c3d238d085e4399c9",
+    "url": "/StartPage/static/js/main.c25c3d23.chunk.js"
+  },
+  {
+    "revision": "52013f072759b64e4c8b8850bb4afbb8",
+    "url": "/StartPage/static/media/light-on.52013f07.svg"
+  },
+  {
+    "revision": "957f717d8d15c0259fe3a36e9149a1c4",
+    "url": "/StartPage/static/media/light-off.957f717d.svg"
   },
   {
     "revision": "f857faf05151956a86e6791e667f0f55",
@@ -88,7 +96,7 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/thunderStorm.0fff53ee.svg"
   },
   {
-    "revision": "7f70c46d81a701c5d6840875e7766449",
+    "revision": "188eaa11c548b4360656ff0bcfb1e6ed",
     "url": "/StartPage/index.html"
   }
 ];
