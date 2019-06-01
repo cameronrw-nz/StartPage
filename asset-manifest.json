@@ -1,9 +1,9 @@
 {
-  "main.css": "/StartPage/static/css/main.78155c82.chunk.css",
-  "main.js": "/StartPage/static/js/main.c25c3d23.chunk.js",
-  "main.js.map": "/StartPage/static/js/main.c25c3d23.chunk.js.map",
-  "static/js/1.e898288f.chunk.js": "/StartPage/static/js/1.e898288f.chunk.js",
-  "static/js/1.e898288f.chunk.js.map": "/StartPage/static/js/1.e898288f.chunk.js.map",
+  "main.css": "/StartPage/static/css/main.2e0a4eba.chunk.css",
+  "main.js": "/StartPage/static/js/main.a5f3d85c.chunk.js",
+  "main.js.map": "/StartPage/static/js/main.a5f3d85c.chunk.js.map",
+  "static/js/1.f83fe22c.chunk.js": "/StartPage/static/js/1.f83fe22c.chunk.js",
+  "static/js/1.f83fe22c.chunk.js.map": "/StartPage/static/js/1.f83fe22c.chunk.js.map",
   "runtime~main.js": "/StartPage/static/js/runtime~main.4348a41d.js",
   "runtime~main.js.map": "/StartPage/static/js/runtime~main.4348a41d.js.map",
   "static/media/heavyRain.svg": "/StartPage/static/media/heavyRain.531d27ab.svg",
@@ -26,8 +26,8 @@
   "static/media/scatteredClouds.svg": "/StartPage/static/media/scatteredClouds.844c1a55.svg",
   "static/media/snow.svg": "/StartPage/static/media/snow.b2c0182b.svg",
   "static/media/thunderStorm.svg": "/StartPage/static/media/thunderStorm.0fff53ee.svg",
-  "static/css/main.78155c82.chunk.css.map": "/StartPage/static/css/main.78155c82.chunk.css.map",
+  "static/css/main.2e0a4eba.chunk.css.map": "/StartPage/static/css/main.2e0a4eba.chunk.css.map",
   "index.html": "/StartPage/index.html",
-  "precache-manifest.8b0b0a6b7f3f1c5bf8fce3b4dec5a91f.js": "/StartPage/precache-manifest.8b0b0a6b7f3f1c5bf8fce3b4dec5a91f.js",
+  "precache-manifest.e9ec761ad006f27f30b7706d701f5a6f.js": "/StartPage/precache-manifest.e9ec761ad006f27f30b7706d701f5a6f.js",
   "service-worker.js": "/StartPage/service-worker.js"
 }
