@@ -54,7 +54,14 @@ function Link(props) {
         ? links.map((element, index) => {
               return (
                   <a href={element.link}>
-                      <div className="section-item">
+                      <div
+                          className="section-item"
+                          style={{
+                              color: props.theme.staticText,
+                              borderColor: props.theme.border,
+                              backgroundColor: props.theme.boxBackground
+                          }}
+                      >
                           <div className="section-item-content">
                               {element.name}
                           </div>
@@ -79,6 +86,11 @@ function Link(props) {
                     style={{ marginRight: "4px" }}
                     placeholder="Name"
                     value={currentName}
+                    style={{
+                        borderColor: props.theme.border,
+                        background: props.theme.boxBackground,
+                        color: props.theme.dynamicText
+                    }}
                 />
                 <input
                     type="text"
@@ -86,21 +98,42 @@ function Link(props) {
                     style={{ marginRight: "4px" }}
                     placeholder="Link"
                     value={currentLink}
+                    style={{
+                        borderColor: props.theme.border,
+                        background: props.theme.boxBackground,
+                        color: props.theme.dynamicText
+                    }}
                 />
-                <button type="submit" className="sidepanel-content-button">
+                <button
+                    type="submit"
+                    className="sidepanel-content-button"
+                    style={{
+                        borderColor: props.theme.border,
+                        background: props.theme.boxBackground,
+                        color: props.theme.dynamicText
+                    }}
+                >
                     +
                 </button>
             </div>
         </form>
     ) : (
         <div className="action-button" onClick={() => setIsLinking(true)}>
-            <div className="action-button-content">Add</div>
+            <div
+                className="action-button-content"
+                style={{
+                    borderColor: props.theme.border,
+                    color: props.theme.staticText
+                }}
+            >
+                Add
+            </div>
         </div>
     );
 
     return (
         <div className="sidepanel-content">
-            <h2>Links</h2>
+            <h2 style={{ color: props.theme.staticText }}>Links</h2>
             {linksDisplay}
             <div style={{ display: "flex", flexDirection: "column" }} />
             {addLinkContent}

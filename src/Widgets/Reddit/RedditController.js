@@ -2,6 +2,7 @@ import React from "react";
 import snoowrap from "snoowrap";
 
 import RedditView from "./RedditView";
+import { ThemeContext } from "../../Shared/Theme/ThemeContext";
 
 const webColour = "rgb(64.4%, 29.1%, 29.1%)";
 const dotnetColour = "rgb(34.6%, 39.5%, 64.8%)";
@@ -160,10 +161,12 @@ class RedditController extends React.Component {
                 pickRandom={this.pickRandom}
                 isLoggedIn={this.state.isLoggedIn}
                 onSubmit={this.onSubmit}
+                theme={this.context}
                 errorMessage={this.state.errorMessage}
             />
         );
     }
 }
+RedditController.contextType = ThemeContext;
 
 export default RedditController;

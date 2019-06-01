@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import EmailLogo from '../Icons/email.svg'
-import GitHubLogo from '../Icons/github.svg'
-import GoogleMaps from '../Icons/map.svg'
-import RedditLogo from '../Icons/reddit.svg'
-import TwitchLogo from '../Icons/twitch.svg'
-import YoutubeLogo from '../Icons/youtube.svg'
+import EmailLogo from "../Shared/Icons/email.svg";
+import GitHubLogo from "../Shared/Icons/github.svg";
+import GoogleMaps from "../Shared/Icons/map.svg";
+import RedditLogo from "../Shared/Icons/reddit.svg";
+import TwitchLogo from "../Shared/Icons/twitch.svg";
+import YoutubeLogo from "../Shared/Icons/youtube.svg";
 
 function IconBar() {
     return (
@@ -25,7 +25,7 @@ function Icon(props) {
         <a href={props.url}>
             <img src={props.logo} className="icon-bar-icon" alt="logo" />
         </a>
-    )
+    );
 }
 
-export default IconBar
+export default IconBar;

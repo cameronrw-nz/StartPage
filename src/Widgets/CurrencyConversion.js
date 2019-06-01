@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import * as Api from "../Api/Api";
+import * as Api from "../Shared/Api/Api";
 import usePrevious from "../UsePrevious";
+import { ThemeContext } from "../Shared/Theme/ThemeContext";
 
 const availableCurrencies = ["NZD", "THB", "USD"];
 
@@ -74,33 +75,63 @@ function CurrencyConversion() {
     }
 
     return (
-        <div className="sidepanel-content">
-            <h2>Currency Converter</h2>
-            <div className="sidepanel-link-input">
-                <input
-                    type="text"
-                    placeholder="THB"
-                    value={fromAmount}
-                    onInput={onFromChanged}
-                />
-                <div
-                    className="currency"
-                    style={{ marginRight: "4px" }}
-                    onClick={onFromCurrencyChanged}
-                >
-                    {fromCurrency}
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="sidepanel-content">
+                    <h2 style={{ color: theme.staticText }}>
+                        Currency Converter
+                    </h2>
+                    <div
+                        className="sidepanel-link-input"
+                        style={{ color: theme.dynamicText }}
+                    >
+                        <input
+                            type="text"
+                            placeholder="THB"
+                            value={fromAmount}
+                            onInput={onFromChanged}
+                            style={{
+                                borderColor: theme.border,
+                                background: theme.boxBackground,
+                                color: theme.dynamicText
+                            }}
+                        />
+                        <div
+                            className="currency"
+                            style={{ marginRight: "4px" }}
+                            onClick={onFromCurrencyChanged}
+                            style={{
+                                borderColor: theme.border,
+                                background: theme.boxBackground
+                            }}
+                        >
+                            {fromCurrency}
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="NZD"
+                            value={toAmount}
+                            onInput={onToChanged}
+                            style={{
+                                borderColor: theme.border,
+                                background: theme.boxBackground,
+                                color: theme.dynamicText
+                            }}
+                        />
+                        <div
+                            className="currency"
+                            onClick={onToCurrencyChanged}
+                            style={{
+                                borderColor: theme.border,
+                                background: theme.boxBackground
+                            }}
+                        >
+                            {toCurrency}
+                        </div>
+                    </div>
                 </div>
-                <input
-                    type="text"
-                    placeholder="NZD"
-                    value={toAmount}
-                    onInput={onToChanged}
-                />
-                <div className="currency" onClick={onToCurrencyChanged}>
-                    {toCurrency}
-                </div>
-            </div>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     );
 }
 

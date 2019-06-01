@@ -4,7 +4,6 @@
     min-height: 100vh;
     background-size: auto 130vh;
     background-position-x: right;
-    background-color: #383e4b;
 }
 
 .app-content {
@@ -95,7 +94,6 @@
     border: 1px solid #6b7586;
     background-color: #49505f;
     font-size: 16px;
-    color: white;
     text-align: center;
     padding-top: 5px;
 }
@@ -152,7 +150,6 @@ a {
     border: 1px solid #6b7586;
     background-color: #49505f;
     font-size: 16px;
-    color: white;
     text-align: center;
 }
 
@@ -168,7 +165,6 @@ a {
     border: 1px solid #6b7586;
     background-color: #49505f;
     font-size: 20px;
-    color: white;
     text-align: center;
 }
 
@@ -221,15 +217,18 @@ a {
     display: flex;
 }
 
+.light-icon {
+    padding-left: 8px;
+}
+
 .search-bar-icon {
     width: 5vw;
     min-width: 64px;
     max-width: 90vw;
     height: 32px;
-    border-left: 1px solid #6b7586;
-    border-top: 1px solid #6b7586;
-    border-bottom: 1px solid #6b7586;
-    background-color: #49505f;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
 
 .search-bar-icon:hover {
@@ -247,15 +246,9 @@ a {
     min-width: 400px;
     max-width: 90vw;
     font-size: 24px;
-    color: white;
     text-align: center;
-    background-color: #49505f;
-    border: 1px solid #6b7586;
+    border: 1px solid;
     padding-left: 8px;
-}
-
-.search-bar-search::placeholder {
-    color: #818b9e;
 }
 
 .search-bar-search:focus {
@@ -271,7 +264,6 @@ a {
     padding-right: 16px;
     padding-top: 8px;
     position: absolute;
-    color: #818b9e;
     right: 0px;
     top: 0px;
 }
