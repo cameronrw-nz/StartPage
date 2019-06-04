@@ -1,9 +1,50 @@
 import React from "react";
+import Select from "react-select/creatable";
 
 function RedditView(props) {
     let loginDisplay;
     let refreshItemDisplay;
     let redditContentDisplay;
+    let chosenSubredditDisplay;
+
+    if (!props.isShowingSubreddits) {
+        const customStyles = {
+            control: () => ({
+                display: "flex",
+                backgroundColor: props.theme.boxBackground
+            }),
+            menuList: provided => ({
+                ...provided,
+                backgroundColor: props.theme.boxBackground
+            }),
+            multiValue: provided => ({
+                ...provided,
+                backgroundColor: props.theme.boxBackground,
+                color: props.theme.dynamicText
+            }),
+            multiValueLabel: provided => ({
+                ...provided,
+                color: props.theme.dynamicText
+            }),
+            multiValueRemove: provided => ({
+                ...provided,
+                color: props.theme.dynamicText
+            })
+        };
+        chosenSubredditDisplay = (
+            <div style={{ border: `1px solid ${props.theme.border}` }}>
+                <Select
+                    styles={customStyles}
+                    isMulti={true}
+                    closeMenuOnSelect={false}
+                    backspaceRemovesValue={true}
+                    options={props.availableSubreddits}
+                    onChange={props.onSubredditChange}
+                    value={props.chosenSubreddits}
+                />
+            </div>
+        );
+    }
 
     if (props.isLoggedIn) {
         if (props.content) {
@@ -82,6 +123,7 @@ function RedditView(props) {
     return (
         <div className="sidepanel-content">
             <h2 style={{ color: props.theme.staticText }}>Reddit Saved</h2>
+            {chosenSubredditDisplay}
             {redditContentDisplay}
             {refreshItemDisplay}
             {loginDisplay}

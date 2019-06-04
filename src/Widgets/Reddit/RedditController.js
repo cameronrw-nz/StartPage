@@ -6,22 +6,35 @@ import { ThemeContext } from "../../Shared/Theme/ThemeContext";
 
 const webColour = "rgb(64.4%, 29.1%, 29.1%)";
 const dotnetColour = "rgb(34.6%, 39.5%, 64.8%)";
-const generalColour = "rgb(30.6%, 60.9%, 35.9%)";
+const generalProgrammingColour = "rgb(30.6%, 60.9%, 35.9%)";
+const generalColour = "rgb(53%, 38.9%, 50.9%)";
 const allowedSubreddits = new Map();
 allowedSubreddits.set("r/reactjs", webColour);
-allowedSubreddits.set("r/programming", generalColour);
+allowedSubreddits.set("r/programming", generalProgrammingColour);
 allowedSubreddits.set("r/webdev", webColour);
-allowedSubreddits.set("r/learnprogramming", generalColour);
+allowedSubreddits.set("r/learnprogramming", generalProgrammingColour);
 allowedSubreddits.set("r/csharp", dotnetColour);
 allowedSubreddits.set("r/web_design", webColour);
 allowedSubreddits.set("r/javascript", webColour);
+
+const availableSubreddits = [
+    { value: "r/reactjs", label: "r/reactjs" },
+    { value: "r/programming", label: "r/programming" },
+    { value: "r/webdev", label: "r/webdev" },
+    { value: "r/learnprogramming", label: "r/learnprogramming" },
+    { value: "r/csharp", label: "r/csharp" },
+    { value: "r/web_design", label: "r/web_design" },
+    { value: "r/javascript", label: "r/javascript" }
+];
 
 class RedditController extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            savedCategories: undefined
+            savedCategories: undefined,
+            availableSubreddits: availableSubreddits,
+            chosenSubreddits: availableSubreddits
         };
 
         this.pickRandom = this.pickRandom.bind(this);
@@ -65,33 +78,34 @@ class RedditController extends React.Component {
         }
         var saved = await me.getSavedContent();
 
-        var savedCategories = new Map();
         var items = [];
+        let chosenSubredditItems = [];
         saved.forEach(element => {
-            const categoryColour = allowedSubreddits.get(
-                element.subreddit_name_prefixed
-            );
-            if (categoryColour) {
-                items.push({
+            const categoryColour =
+                allowedSubreddits.get(element.subreddit_name_prefixed) ||
+                generalColour;
+            items.push({
+                name: element.title,
+                link: element.permalink,
+                colour: categoryColour,
+                urlPrefix: element.subreddit_name_prefixed
+            });
+            if (
+                this.state.chosenSubreddits.find(
+                    subreddit =>
+                        subreddit.value === element.subreddit_name_prefixed
+                )
+            ) {
+                chosenSubredditItems.push({
                     name: element.title,
                     link: element.permalink,
                     colour: categoryColour
                 });
-                if (!savedCategories.get(element.subreddit_name_prefixed)) {
-                    savedCategories.set(element.subreddit_name_prefixed, [
-                        { name: element.title, permalink: element.permalink }
-                    ]);
-                } else {
-                    savedCategories.get(element.subreddit_name_prefixed).push({
-                        name: element.title,
-                        permalink: element.permalink
-                    });
-                }
             }
         });
 
-        this.setState({ items });
-        this.pickRandom();
+        this.setState({ items, chosenSubredditItems });
+        this.pickRandom(chosenSubredditItems);
 
         // Fetch More
         saved = await saved.fetchMore({
@@ -99,47 +113,54 @@ class RedditController extends React.Component {
             amount: 100
         });
 
-        savedCategories = new Map();
         items = [];
+        chosenSubredditItems = [];
         saved.forEach(element => {
-            const categoryColour = allowedSubreddits.get(
-                element.subreddit_name_prefixed
-            );
-            if (categoryColour) {
-                items.push({
+            const categoryColour =
+                allowedSubreddits.get(element.subreddit_name_prefixed) ||
+                generalColour;
+            items.push({
+                name: element.title,
+                link: element.permalink,
+                colour: categoryColour,
+                urlPrefix: element.subreddit_name_prefixed
+            });
+            if (
+                this.state.chosenSubreddits.find(
+                    subreddit =>
+                        subreddit.value === element.subreddit_name_prefixed
+                )
+            ) {
+                chosenSubredditItems.push({
                     name: element.title,
                     link: element.permalink,
                     colour: categoryColour
                 });
-                if (!savedCategories.get(element.subreddit_name_prefixed)) {
-                    savedCategories.set(element.subreddit_name_prefixed, [
-                        { name: element.title, permalink: element.permalink }
-                    ]);
-                } else {
-                    savedCategories.get(element.subreddit_name_prefixed).push({
-                        name: element.title,
-                        permalink: element.permalink
-                    });
-                }
             }
         });
-        this.setState({ items });
+        this.setState({ items, chosenSubredditItems });
         return true;
     };
 
-    pickRandom() {
-        if (!this.state.items) {
+    pickRandom(chosenSubredditItems) {
+        if (!chosenSubredditItems) {
             return;
         }
 
-        const randomItemIndex = Math.floor(
-            Math.random() * (this.state.items.length - 7)
-        );
-        var items = this.state.items.slice(
-            randomItemIndex,
-            randomItemIndex + 7
-        );
-        this.setState({ randomSavedItems: items });
+        let randomSavedItems;
+        if (chosenSubredditItems.length > 7) {
+            const randomItemIndex = Math.floor(
+                Math.random() * (chosenSubredditItems.length - 7)
+            );
+            randomSavedItems = chosenSubredditItems.slice(
+                randomItemIndex,
+                randomItemIndex + 7
+            );
+        } else {
+            randomSavedItems = chosenSubredditItems;
+        }
+
+        this.setState({ randomSavedItems });
     }
 
     onSubmit = e => {
@@ -150,6 +171,22 @@ class RedditController extends React.Component {
         if (username && password) {
             this.getSavedItems(username, password);
         }
+    };
+
+    onSubredditChange = chosenSubreddits => {
+        const chosenSubredditItems = [];
+        this.state.items &&
+            this.state.items.forEach(item => {
+                if (
+                    chosenSubreddits.find(
+                        subreddit => subreddit.value === item.urlPrefix
+                    )
+                ) {
+                    chosenSubredditItems.push(item);
+                }
+            });
+        this.setState({ chosenSubreddits, chosenSubredditItems });
+        this.pickRandom(chosenSubredditItems);
     };
 
     render() {
@@ -163,6 +200,9 @@ class RedditController extends React.Component {
                 onSubmit={this.onSubmit}
                 theme={this.context}
                 errorMessage={this.state.errorMessage}
+                availableSubreddits={this.state.availableSubreddits}
+                chosenSubreddits={this.state.chosenSubreddits}
+                onSubredditChange={this.onSubredditChange}
             />
         );
     }
