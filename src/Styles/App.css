@@ -221,6 +221,11 @@ a {
     padding-left: 8px;
 }
 
+h2 > img {
+    margin-left: 4px;
+    height: 20px;
+}
+
 .search-bar-icon {
     width: 5vw;
     min-width: 64px;

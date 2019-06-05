@@ -1,13 +1,15 @@
 import React from "react";
 import Select from "react-select/creatable";
 
+import EditIcon from "../../Shared/Icons/edit.svg";
+
 function RedditView(props) {
     let loginDisplay;
     let refreshItemDisplay;
     let redditContentDisplay;
     let chosenSubredditDisplay;
 
-    if (!props.isShowingSubreddits) {
+    if (props.isChoosingSubreddits) {
         const customStyles = {
             control: () => ({
                 display: "flex",
@@ -122,7 +124,14 @@ function RedditView(props) {
 
     return (
         <div className="sidepanel-content">
-            <h2 style={{ color: props.theme.staticText }}>Reddit Saved</h2>
+            <h2 style={{ color: props.theme.staticText }}>
+                Reddit Saved
+                <img
+                    src={EditIcon}
+                    alt="Edit subreddits"
+                    onClick={props.toggleChoosingSubreddits}
+                />
+            </h2>
             {chosenSubredditDisplay}
             {redditContentDisplay}
             {refreshItemDisplay}

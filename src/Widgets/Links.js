@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
+import EditIcon from "../Shared/Icons/edit.svg";
+
 function Link(props) {
-    const [isEnteringLink, setIsLinking] = useState(false);
     const [links, setLinks] = useState([]);
     const [currentLink, setCurrentLink] = useState("");
     const [currentName, setCurrentName] = useState("");
+    const [isAddingLinks, setIsAddingLinks] = useState(false);
 
     useEffect(() => {
         setLinks(JSON.parse(window.localStorage.getItem("links")));
@@ -31,7 +33,6 @@ function Link(props) {
         setLinks(localStorageLinks);
         setCurrentLink("");
         setCurrentName("");
-        setIsLinking(false);
     };
 
     const removeLink = (e, index) => {
@@ -78,7 +79,7 @@ function Link(props) {
           })
         : undefined;
 
-    const addLinkContent = isEnteringLink ? (
+    const addLinkContent = isAddingLinks ? (
         <form onSubmit={handleSubmit}>
             <div className="sidepanel-link-input">
                 <input
@@ -119,25 +120,21 @@ function Link(props) {
             </div>
         </form>
     ) : (
-        <div className="action-button" onClick={() => setIsLinking(true)}>
-            <div
-                className="action-button-content"
-                style={{
-                    borderColor: props.theme.border,
-                    color: props.theme.staticText
-                }}
-            >
-                Add
-            </div>
-        </div>
+        undefined
     );
 
     return (
         <div className="sidepanel-content">
-            <h2 style={{ color: props.theme.staticText }}>Links</h2>
-            {linksDisplay}
-            <div style={{ display: "flex", flexDirection: "column" }} />
+            <h2 style={{ color: props.theme.staticText }}>
+                Links{" "}
+                <img
+                    src={EditIcon}
+                    alt="Edit Links"
+                    onClick={() => setIsAddingLinks(!isAddingLinks)}
+                />
+            </h2>
             {addLinkContent}
+            {linksDisplay}
         </div>
     );
 }

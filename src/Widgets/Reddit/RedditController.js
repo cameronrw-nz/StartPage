@@ -31,10 +31,18 @@ class RedditController extends React.Component {
     constructor(props) {
         super(props);
 
+        const initialChosenSubredditsJson = window.localStorage.getItem(
+            "subreddits"
+        );
+        const initialChosenSubreddits = initialChosenSubredditsJson
+            ? JSON.parse(initialChosenSubredditsJson)
+            : availableSubreddits;
+
         this.state = {
             savedCategories: undefined,
             availableSubreddits: availableSubreddits,
-            chosenSubreddits: availableSubreddits
+            chosenSubreddits: initialChosenSubreddits,
+            isChoosingSubreddits: false
         };
 
         this.pickRandom = this.pickRandom.bind(this);
@@ -53,6 +61,12 @@ class RedditController extends React.Component {
             );
         }
     }
+
+    toggleChoosingSubreddits = () => {
+        this.setState({
+            isChoosingSubreddits: !this.state.isChoosingSubreddits
+        });
+    };
 
     getSavedItems = async (username, password) => {
         // Replace with actual connection to reddit.
@@ -178,6 +192,8 @@ class RedditController extends React.Component {
         this.state.items &&
             this.state.items.forEach(item => {
                 if (
+                    !chosenSubreddits ||
+                    chosenSubreddits.length === 0 ||
                     chosenSubreddits.find(
                         subreddit => subreddit.value === item.urlPrefix
                     )
@@ -187,6 +203,8 @@ class RedditController extends React.Component {
             });
         this.setState({ chosenSubreddits, chosenSubredditItems });
         this.pickRandom(chosenSubredditItems);
+
+        localStorage.setItem("subreddits", JSON.stringify(chosenSubreddits));
     };
 
     render() {
@@ -195,7 +213,9 @@ class RedditController extends React.Component {
                 content={this.state.randomSavedItems}
                 error={this.state.error}
                 isLoading={this.state.items === undefined}
-                pickRandom={this.pickRandom}
+                pickRandom={() =>
+                    this.pickRandom(this.state.chosenSubredditItems)
+                }
                 isLoggedIn={this.state.isLoggedIn}
                 onSubmit={this.onSubmit}
                 theme={this.context}
@@ -203,6 +223,8 @@ class RedditController extends React.Component {
                 availableSubreddits={this.state.availableSubreddits}
                 chosenSubreddits={this.state.chosenSubreddits}
                 onSubredditChange={this.onSubredditChange}
+                isChoosingSubreddits={this.state.isChoosingSubreddits}
+                toggleChoosingSubreddits={this.toggleChoosingSubreddits}
             />
         );
     }
