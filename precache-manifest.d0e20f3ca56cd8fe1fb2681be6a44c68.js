@@ -4,16 +4,20 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/YoutubeIcon.a7c57edd.svg"
   },
   {
-    "revision": "a5f3d85cf5c3ba320a64",
-    "url": "/StartPage/static/css/main.2e0a4eba.chunk.css"
+    "revision": "01dd19f75160d66ac446",
+    "url": "/StartPage/static/css/main.5820c8dd.chunk.css"
   },
   {
-    "revision": "f83fe22ca1aa48fcbec5",
-    "url": "/StartPage/static/js/1.f83fe22c.chunk.js"
+    "revision": "86a9e9dc9400cde71c23",
+    "url": "/StartPage/static/js/1.86a9e9dc.chunk.js"
   },
   {
     "revision": "4348a41df45156bb5a72",
     "url": "/StartPage/static/js/runtime~main.4348a41d.js"
+  },
+  {
+    "revision": "d81f3528ecaea1c409e3399ae109c198",
+    "url": "/StartPage/static/media/edit.d81f3528.svg"
   },
   {
     "revision": "4082623ae3f18cbd25c66c4045f02edf",
@@ -48,8 +52,8 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/RedditIcon.a0b0f5d7.svg"
   },
   {
-    "revision": "a5f3d85cf5c3ba320a64",
-    "url": "/StartPage/static/js/main.a5f3d85c.chunk.js"
+    "revision": "01dd19f75160d66ac446",
+    "url": "/StartPage/static/js/main.01dd19f7.chunk.js"
   },
   {
     "revision": "52013f072759b64e4c8b8850bb4afbb8",
@@ -96,7 +100,7 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/thunderStorm.0fff53ee.svg"
   },
   {
-    "revision": "6542bdbd9b3c224abee137ca717a07e7",
+    "revision": "380f19c4d26033f16aeaf10d37bc3319",
     "url": "/StartPage/index.html"
   }
 ];
