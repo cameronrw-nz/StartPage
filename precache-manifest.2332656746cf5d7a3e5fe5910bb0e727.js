@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/YoutubeIcon.a7c57edd.svg"
   },
   {
-    "revision": "8b6f5c04901be1e2c06a",
-    "url": "/StartPage/static/css/main.ebf8b84c.chunk.css"
+    "revision": "b5fcae52c572157dc036",
+    "url": "/StartPage/static/css/main.d1d46509.chunk.css"
   },
   {
     "revision": "86a9e9dc9400cde71c23",
@@ -52,8 +52,8 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/RedditIcon.a0b0f5d7.svg"
   },
   {
-    "revision": "8b6f5c04901be1e2c06a",
-    "url": "/StartPage/static/js/main.8b6f5c04.chunk.js"
+    "revision": "b5fcae52c572157dc036",
+    "url": "/StartPage/static/js/main.b5fcae52.chunk.js"
   },
   {
     "revision": "52013f072759b64e4c8b8850bb4afbb8",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/StartPage/static/media/thunderStorm.0fff53ee.svg"
   },
   {
-    "revision": "ebe80716d10ecac11975d3c8381e43bc",
+    "revision": "60e1e88a68b0d18f04d49ccf7dc0792b",
     "url": "/StartPage/index.html"
   }
 ];

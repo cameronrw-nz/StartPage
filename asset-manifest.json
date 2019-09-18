@@ -1,7 +1,7 @@
 {
-  "main.css": "/StartPage/static/css/main.ebf8b84c.chunk.css",
-  "main.js": "/StartPage/static/js/main.8b6f5c04.chunk.js",
-  "main.js.map": "/StartPage/static/js/main.8b6f5c04.chunk.js.map",
+  "main.css": "/StartPage/static/css/main.d1d46509.chunk.css",
+  "main.js": "/StartPage/static/js/main.b5fcae52.chunk.js",
+  "main.js.map": "/StartPage/static/js/main.b5fcae52.chunk.js.map",
   "static/js/1.86a9e9dc.chunk.js": "/StartPage/static/js/1.86a9e9dc.chunk.js",
   "static/js/1.86a9e9dc.chunk.js.map": "/StartPage/static/js/1.86a9e9dc.chunk.js.map",
   "runtime~main.js": "/StartPage/static/js/runtime~main.4348a41d.js",
@@ -27,8 +27,8 @@
   "static/media/scatteredClouds.svg": "/StartPage/static/media/scatteredClouds.844c1a55.svg",
   "static/media/snow.svg": "/StartPage/static/media/snow.b2c0182b.svg",
   "static/media/thunderStorm.svg": "/StartPage/static/media/thunderStorm.0fff53ee.svg",
-  "static/css/main.ebf8b84c.chunk.css.map": "/StartPage/static/css/main.ebf8b84c.chunk.css.map",
+  "static/css/main.d1d46509.chunk.css.map": "/StartPage/static/css/main.d1d46509.chunk.css.map",
   "index.html": "/StartPage/index.html",
-  "precache-manifest.7a6a1918cb89197b9bccc2464c2d00b6.js": "/StartPage/precache-manifest.7a6a1918cb89197b9bccc2464c2d00b6.js",
+  "precache-manifest.2332656746cf5d7a3e5fe5910bb0e727.js": "/StartPage/precache-manifest.2332656746cf5d7a3e5fe5910bb0e727.js",
   "service-worker.js": "/StartPage/service-worker.js"
 }
